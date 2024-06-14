@@ -32,8 +32,8 @@
    - Choose option 3 to get a list of all accounts within the bank.
 
 4. Check account balance
-    Choose option 4 to check the balance of a specific account.
-    Enter the account ID. 
+   - Choose option 4 to check the balance of a specific account.
+   - Enter the account ID. 
 
 5. Withdraw
    - Choose option 5 to withdraw money from an account.
