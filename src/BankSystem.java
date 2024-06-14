@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class BankSystem {
@@ -17,9 +18,9 @@ public class BankSystem {
             System.out.println("8. Display account transactions");
             System.out.println("9. Exit");
 
+            try {
             int action = scanner.nextInt();
 
-            
                 switch (action) {
                     case 1:
                         System.out.println("Enter the bank name:");
@@ -34,12 +35,12 @@ public class BankSystem {
                     case 2:
                     if (bank != null) {
                         System.out.println("Enter account ID:");
-                        int accountId1 = scanner.nextInt();
+                        int accId = scanner.nextInt();
                         System.out.println("Enter account holder's name:");
                         String accountName = scanner.next();
                         System.out.println("Enter initial balance:");
                         double initialBalance = scanner.nextDouble();
-                        Account account = new Account(accountId1, accountName, initialBalance);
+                        Account account = new Account(accId, accountName, initialBalance);
                         bank.createAccount(account);
                         System.out.println("Account created successfully.");
                     } else {
@@ -90,6 +91,12 @@ public class BankSystem {
                     default:
                         System.out.println("Invalid choice. Please try again.");
                 }
+                } catch (InputMismatchException e) {
+                System.out.println("Invalid input. Please enter the correct data type.");
+                scanner.next();
+            } catch (Exception e) {
+                System.out.println("An error occurred: " + e.getMessage());
+            }
             
             }
         }

@@ -1,9 +1,5 @@
 # Bank System Console Application
 
-## Technologies used
-Java
-Maven
-
 ## Installation
 1. Clone the repository to your local machine
 git clone https://github.com/erezalepaja/bank-system.git

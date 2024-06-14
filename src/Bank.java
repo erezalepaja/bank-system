@@ -3,7 +3,7 @@ import javax.security.auth.login.AccountNotFoundException;
 
 public class Bank {
     private String bankName;
-    ArrayList<Account> accounts;
+    private ArrayList<Account> accounts;
     private double totalTransactionFee;
     private double totalTransferAmount;
     private double flatFee;
@@ -18,24 +18,36 @@ public class Bank {
         this.percentFee = percentFee;
     }
 
-    public double getFlatFee(){
-        return flatFee;
-    }
-
-    public String getBankName(){
+    public String getBankName() {
         return bankName;
     }
 
-    public double getPercentFee(){
-        return percentFee;
+    public void setBankName(String bankName) {
+        this.bankName = bankName;
+    }
+
+    public double getFlatFee(){
+        return flatFee;
     }
 
     public void setFlatFee(double flatFee){
         this.flatFee = flatFee;
     }
 
+    public double getPercentFee(){
+        return percentFee;
+    }
+
     public void setPercentFee(double percentFee){
         this.percentFee = percentFee;
+    }
+
+    public double getTotalTransferAmount(){
+        return totalTransferAmount;
+    }
+
+    public double getTotalTransactionFee(){
+        return totalTransactionFee;
     }
 
     public void createAccount(Account newAcc) {
@@ -52,14 +64,6 @@ public class Bank {
 
     public void addTransferAmount(double amount) {
         totalTransferAmount += amount;
-    }
-
-    public double getTotalTransferAmount(){
-        return totalTransferAmount;
-    }
-
-    public double getTotalTransactionFee(){
-        return totalTransactionFee;
     }
 
     public Account getAccountById(int accountId) throws AccountNotFoundException {
