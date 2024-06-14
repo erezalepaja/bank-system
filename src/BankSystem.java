@@ -11,12 +11,13 @@ public class BankSystem {
             System.out.println("1. Create a bank");
             System.out.println("2. Create an account");
             System.out.println("3. View all accounts");
-            System.out.println("4. Withdraw");
-            System.out.println("5. Deposit");
-            System.out.println("6. Transfer");
-            System.out.println("7. Display bank totals");
-            System.out.println("8. Display account transactions");
-            System.out.println("9. Exit");
+            System.out.println("4. Check account balance");
+            System.out.println("5. Withdraw");
+            System.out.println("6. Deposit");
+            System.out.println("7. Transfer");
+            System.out.println("8. Display bank totals");
+            System.out.println("9. Display account transactions");
+            System.out.println("10. Exit");
 
             try {
             int action = scanner.nextInt();
@@ -50,6 +51,20 @@ public class BankSystem {
                         bank.listAllBankAccounts();
                         break;
                     case 4:
+                        if (bank != null) {
+                            System.out.println("Enter account ID to check balance:");
+                            int accountID = scanner.nextInt();
+                            Account account = bank.getAccountById(accountID);
+                            if (account != null) {
+                                System.out.println("Account balance: " + account.getAccountBalance());
+                            } else {
+                                System.out.println("Account not found.");
+                            }
+                        } else {
+                            System.out.println("Please create a bank first.");
+                        }
+                        break;
+                    case 5:
                         System.out.println("Enter account ID for withdrawal:");
                         int withdrawId = scanner.nextInt();
                         System.out.println("Enter amount:");
@@ -57,7 +72,7 @@ public class BankSystem {
                         Transaction withdrawal = new Withdraw(withdrawAmount, withdrawId, "ATM Withdrawal");
                         withdrawal.executeTransaction(bank);
                         break;
-                    case 5:
+                    case 6:
                         System.out.println("Enter account ID for deposit:");
                         int depositId = scanner.nextInt();
                         System.out.println("Enter amount:");
@@ -65,7 +80,7 @@ public class BankSystem {
                         Transaction deposit = new Deposit(depositAmount, depositId, "Bank Deposit");
                         deposit.executeTransaction(bank);
                         break;
-                    case 6:
+                    case 7:
                         System.out.println("Enter originating account ID for transfer:");
                         int fromId = scanner.nextInt();
                         System.out.println("Enter resulting account ID for transfer:");
@@ -75,16 +90,16 @@ public class BankSystem {
                         Transaction transfer = new Transfer(transferAmount, fromId, toId, "Transfer");
                         transfer.executeTransaction(bank);
                         break;
-                    case 7:
+                    case 8:
                         System.out.println("Bank's total transaction fee amount: " + bank.getTotalTransactionFee());
                         System.out.println("Bank's total transfer amount: " + bank.getTotalTransferAmount());
                         break;
-                    case 8:
+                    case 9:
                         System.out.println("Enter account ID to display transactions:");
                         int accountId = scanner.nextInt();
                         bank.listAccountTransactions(accountId);
                         break;
-                    case 9:
+                    case 10:
                         scanner.close();
                         System.exit(0);
                         break;
